@@ -72,9 +72,15 @@ public class SignUpDetails extends JFrame{
         dobField.setBounds(190, 210, 250, 25);
         add(dobField);
 
-        JTextField genderField = new JTextField();
-        genderField.setBounds(190, 250, 250, 25);
-        add(genderField);
+        JRadioButton genderMale = new JRadioButton("Male");
+        genderMale.setBounds(190, 250, 100, 25);
+        add(genderMale);
+        JRadioButton genderFemale = new JRadioButton("Female");
+        genderFemale.setBounds(290, 250, 250, 25);
+        add(genderFemale);
+        ButtonGroup genderGroup = new ButtonGroup();
+        genderGroup.add(genderMale);
+        genderGroup.add(genderFemale);
 
         JTextField emailField = new JTextField();
         emailField.setBounds(190, 290, 250, 25);
@@ -95,6 +101,14 @@ public class SignUpDetails extends JFrame{
         JTextField pinCodeField = new JTextField();
         pinCodeField.setBounds(190, 450, 250, 25);
         add(pinCodeField);
+
+        //Button
+        JButton nextbutton = new JButton("Next");
+        nextbutton.setBounds(310,490,130,40);
+        nextbutton.setFont(new Font("Raleway", Font.BOLD,16));
+        nextbutton.setBackground(Color.BLACK);
+        nextbutton.setForeground(Color.white);
+        add(nextbutton);
 
         setVisible(true);
     }
