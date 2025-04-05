@@ -1,7 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class SignUpDetails extends JFrame{
+public class SignUpDetails extends JFrame implements ActionListener{
+    JTextField nameField,fatherNameField,dobField,emailField,addressField,cityField,stateField,pinCodeField;
+    JRadioButton genderMale, genderFemale,genderOthers;
+    JButton nextbutton;
+
     public SignUpDetails(){
         setTitle("New Account Application -  Page 1");
         setSize(550,650);
@@ -60,59 +65,95 @@ public class SignUpDetails extends JFrame{
 
 
         // Text Fields
-        JTextField nameField = new JTextField();
+        nameField = new JTextField();
         nameField.setBounds(190, 130, 250, 25);
         add(nameField);
 
-        JTextField fatherNameField = new JTextField();
+        fatherNameField = new JTextField();
         fatherNameField.setBounds(190, 170, 250, 25);
         add(fatherNameField);
 
-        JTextField dobField = new JTextField("YYYY-MM-DD");
+        dobField = new JTextField("YYYY-MM-DD");
         dobField.setBounds(190, 210, 250, 25);
         add(dobField);
 
-        JRadioButton genderMale = new JRadioButton("Male");
-        genderMale.setBounds(190, 250, 100, 25);
+        genderMale = new JRadioButton("Male");
+        genderMale.setBounds(190, 250, 70, 25);
         add(genderMale);
-        JRadioButton genderFemale = new JRadioButton("Female");
-        genderFemale.setBounds(290, 250, 250, 25);
+        genderFemale = new JRadioButton("Female");
+        genderFemale.setBounds(270, 250, 80, 25);
         add(genderFemale);
+        genderOthers = new JRadioButton("Others");
+        genderOthers.setBounds(360, 250, 80, 25);
+        add(genderOthers);
         ButtonGroup genderGroup = new ButtonGroup();
         genderGroup.add(genderMale);
         genderGroup.add(genderFemale);
+        genderGroup.add(genderOthers);
 
-        JTextField emailField = new JTextField();
+        emailField = new JTextField();
         emailField.setBounds(190, 290, 250, 25);
         add(emailField);
 
-        JTextField addressField = new JTextField();
+        addressField = new JTextField();
         addressField.setBounds(190, 330, 250, 25);
         add(addressField);
 
-        JTextField cityField = new JTextField();
+        cityField = new JTextField();
         cityField.setBounds(190, 370, 250, 25);
         add(cityField);
 
-        JTextField stateField = new JTextField();
+        stateField = new JTextField();
         stateField.setBounds(190, 410, 250, 25);
         add(stateField);
 
-        JTextField pinCodeField = new JTextField();
+        pinCodeField = new JTextField();
         pinCodeField.setBounds(190, 450, 250, 25);
         add(pinCodeField);
 
         //Button
-        JButton nextbutton = new JButton("Next");
+        nextbutton = new JButton("Next");
         nextbutton.setBounds(310,490,130,40);
         nextbutton.setFont(new Font("Raleway", Font.BOLD,16));
         nextbutton.setBackground(Color.BLACK);
         nextbutton.setForeground(Color.white);
         add(nextbutton);
+        nextbutton.addActionListener(this);
 
         setVisible(true);
+    }
+    @Override
+    public void actionPerformed(ActionEvent e){
+        String userName = nameField.getText();
+        String userFather = fatherNameField.getText();
+        String userdob = dobField.getText();
+        String userGender = null;
+        if(genderMale.isSelected()){
+            userGender ="Male";
+        }else if(genderFemale.isSelected()){
+            userGender ="Female";
+        }
+        String gmail = emailField.getText();
+        String userAddress = addressField.getText();
+        String userCity = cityField.getText();
+        String userState = stateField.getText();
+        String userPin = pinCodeField.getText();
+
+        try{
+            if(userName.equals("")){
+                JOptionPane.showMessageDialog(null,"NAME REQUIRED");
+            }
+            else{
+                JDBConnector c = new JDBConnector();
+                String query = "insert into signup values('"+userName+"','"+userFather+"','"+userdob+"','"+userGender+"','"+gmail+"','"+userAddress+"','"+userCity+"','"+userState+"','"+userPin+"')";
+                c.s.executeUpdate(query);
+            }
+        }catch (Exception ae){
+            System.out.println(ae);
+        }
     }
     public static void main(String[] args) {
         new SignUpDetails();
     }
 }
+
