@@ -1,20 +1,25 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.*;
 
 public class SignUpDetails extends JFrame implements ActionListener{
     JTextField nameField,fatherNameField,dobField,emailField,addressField,cityField,stateField,pinCodeField;
     JRadioButton genderMale, genderFemale,genderOthers;
     JButton nextbutton;
 
+    Random ran = new Random();
+    long first4 = (ran.nextLong() % 9000L) + 1000L;
+    String first = "" + Math.abs(first4);
+
     public SignUpDetails(){
-        setTitle("New Account Application -  Page 1");
+        setTitle("New Account Application - Page 1");
         setSize(550,650);
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        JLabel applicationForm = new JLabel("ADD YOUR DETAILS");
-        applicationForm.setBounds(160,20,250,70);
+        JLabel applicationForm = new JLabel("ADD YOUR DETAILS: "+ first);
+        applicationForm.setBounds(130,20,290,70);
         applicationForm.setFont(new Font("Raleway",Font.BOLD,20));
         add(applicationForm);
 
@@ -124,6 +129,7 @@ public class SignUpDetails extends JFrame implements ActionListener{
     }
     @Override
     public void actionPerformed(ActionEvent e){
+        String formno = first;
         String userName = nameField.getText();
         String userFather = fatherNameField.getText();
         String userdob = dobField.getText();
@@ -145,8 +151,11 @@ public class SignUpDetails extends JFrame implements ActionListener{
             }
             else{
                 JDBConnector c = new JDBConnector();
-                String query = "insert into signup values('"+userName+"','"+userFather+"','"+userdob+"','"+userGender+"','"+gmail+"','"+userAddress+"','"+userCity+"','"+userState+"','"+userPin+"')";
+                String query = "insert into signup values('"+formno+"','"+userName+"','"+userFather+"','"+userdob+"','"+userGender+"','"+gmail+"','"+userAddress+"','"+userCity+"','"+userState+"','"+userPin+"')";
                 c.s.executeUpdate(query);
+
+                setVisible(false);
+                new SignUp(formno).setVisible(true);
             }
         }catch (Exception ae){
             System.out.println(ae);
