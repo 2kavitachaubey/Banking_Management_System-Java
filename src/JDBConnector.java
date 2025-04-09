@@ -2,7 +2,7 @@ import java.sql.*;
 public class JDBConnector {
     Connection c;
     Statement s;
-    public  JDBConnector(){
+    public JDBConnector(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             c = DriverManager.getConnection("jdbc:mysql:///BankingManagementSystem","root","admin123");
