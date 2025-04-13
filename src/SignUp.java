@@ -17,7 +17,7 @@ public class SignUp extends JFrame implements ActionListener{
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        JLabel signInDetail = new JLabel("ADD YOUR DETAILS");
+        JLabel signInDetail = new JLabel("ADD YOUR DETAILS" + formno);
         signInDetail.setBounds(140,20,250,70);
         signInDetail.setFont(new Font("Raleway",Font.BOLD,20));
         add(signInDetail);
@@ -173,7 +173,11 @@ public class SignUp extends JFrame implements ActionListener{
                 JDBConnector c = new JDBConnector();
                 String query = "insert into signuptwo values('"+formno+"','" + userReligion + "','" + userCategory + "','" + userIncome + "','" + userEducation + "','" + userOccupation + "','" + userPan + "','" + userAadhar + "','" + userSeniorCitizen + "','" + userExistingAccount + "')";
                 c.s.executeUpdate(query);
+
+                setVisible(false);
+                new SignUp2(formno).setVisible(true);
             }
+
         }catch (Exception ae){
             System.out.println(ae);
         }
