@@ -8,10 +8,11 @@ public class Transaction extends JFrame implements ActionListener {
     String pinNumber;
     public Transaction(String pinNumber){
         this.pinNumber = pinNumber;
+        setTitle("Transaction");
         setSize(620,580);
         setLayout(null );
         getContentPane().setBackground(Color.BLACK);
-//        setLocation(300,0);
+        setLocation(300,0);
 
         JLabel text = new JLabel("Please select your Transaction");
         text.setBounds(150,50,400,40);
@@ -81,6 +82,8 @@ public class Transaction extends JFrame implements ActionListener {
         }else if(ae.getSource() == balanceenquiry){
             setVisible(false);
             new BalanceEnquiry(pinNumber).setVisible(true);
+        }else if(ae.getSource() == ministatement){
+            new MiniStatement(pinNumber).setVisible(true);
         }
     }
     public static void main(String[] args) {

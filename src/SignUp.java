@@ -13,6 +13,7 @@ public class SignUp extends JFrame implements ActionListener{
     public SignUp(String formno){
         this.formno = formno;
         setTitle("New Account Application - Page 2");
+        setLocation(300,0);
         setSize(500,650);
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);

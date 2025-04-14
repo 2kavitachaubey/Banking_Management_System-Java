@@ -9,10 +9,11 @@ public class PinChange extends JFrame implements ActionListener {
     String pinNumber;
     public PinChange(String pinNumber){
         this.pinNumber = pinNumber;
+        setTitle("Pin Change");
         setSize(540, 480);
         getContentPane().setBackground(Color.BLACK);
         setLayout(null);
-        //setLocation(300,0);
+        setLocation(300,0);
 
         JLabel text = new JLabel("CHANGE YOUR PIN:");
         text.setBounds(150, 30, 300, 40);
@@ -95,6 +96,6 @@ public class PinChange extends JFrame implements ActionListener {
         }
     }
     public static void main(String[] args) {
-        new PinChange("").setVisible(true);
+        new PinChange("");
     }
 }

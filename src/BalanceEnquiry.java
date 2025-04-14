@@ -9,10 +9,11 @@ public class BalanceEnquiry extends JFrame implements ActionListener {
     String pinNumber;
     public BalanceEnquiry(String pinNumber){
         this.pinNumber = pinNumber;
+        setTitle("Balance Enquiry");
         setSize(540, 480);
         getContentPane().setBackground(Color.BLACK);
         setLayout(null);
-        //setLocation(300,0);
+        setLocation(300,0);
 
 
         back = new JButton("Back");

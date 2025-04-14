@@ -10,11 +10,12 @@ public class FastCash extends JFrame implements ActionListener {
     JButton deposit, withdrawl, fastcash, ministatement, pinchange, balanceenquiry,exit;
     String pinNumber;
     public FastCash(String pinNumber){
+        setTitle("Fast Cash");
         this.pinNumber = pinNumber;
         setSize(620,580);
         setLayout(null );
         getContentPane().setBackground(Color.BLACK);
-//        setLocation(300,0);
+        setLocation(300,0);
 
         JLabel text = new JLabel("Please select Withdrawal Amount: ");
         text.setBounds(150,50,400,40);

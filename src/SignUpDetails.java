@@ -14,6 +14,7 @@ public class SignUpDetails extends JFrame implements ActionListener{
 
     public SignUpDetails(){
         setTitle("New Account Application - Page 1");
+        setLocation(300,0);
         setSize(550,650);
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
