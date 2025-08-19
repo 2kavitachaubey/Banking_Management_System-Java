@@ -8,7 +8,7 @@ public class Login extends JFrame implements ActionListener{
     JPasswordField pinField;
     JButton clear,signIn,signUp;
     public Login(){
-        setTitle("Automated Teller Machine");
+        setTitle("Automated teller machine");
         setSize(650,500);
         setLayout(null);
         getContentPane().setBackground(Color.WHITE);
