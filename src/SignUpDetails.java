@@ -13,7 +13,7 @@ public class SignUpDetails extends JFrame implements ActionListener{
     String first = "" + Math.abs(first4);
 
     public SignUpDetails(){
-        setTitle("New Account Application - Page 1");
+        setTitle("New account application - Page 1");
         setLocation(300,0);
         setSize(550,650);
         setLayout(null);
