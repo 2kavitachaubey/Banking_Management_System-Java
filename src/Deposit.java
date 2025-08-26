@@ -13,7 +13,7 @@ public class Deposit extends JFrame implements ActionListener {
         setSize(540,480);
         getContentPane().setBackground(Color.BLACK);
         setLayout(null);
-        setTitle("Deposit");
+        setTitle("deposit");
         setLocation(300,0);
 
         JLabel text = new JLabel("Enter the amount you want to deposit: ");
